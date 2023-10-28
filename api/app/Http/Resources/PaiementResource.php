@@ -16,9 +16,8 @@ class PaiementResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'reservation_id' => $this->reservation_id,
             'Montant' => $this->Montant,
-            'mode_paiement_id' => $this->mode_paiement_id,
+            'mode_paiement' => new ModePaiementResource($this->modePaiement),
             'Statut' => $this->Statut,
         ];
     }

@@ -30,7 +30,7 @@ class Reservation extends Model
 
     public function formules()
     {
-        return $this->belongsToMany(Formule::class, 'reservation_formules')->withPivot('Nombre_de_personnes', 'Type_de_session');
+        return $this->belongsToMany(Formule::class, 'reservation_formules')->withPivot('id', 'Nombre_de_personnes', 'Type_de_session');
     }
 
     public function paiements()
@@ -40,12 +40,12 @@ class Reservation extends Model
 
     public function sessions()
     {
-        return $this->belongsToMany(Session::class, 'sessions_reservations')->withPivot('Statut');
+        return $this->belongsToMany(Session::class, 'sessions_reservations')->withPivot('id', 'Statut');
     }
 
     public function alertes()
     {
-        return $this->belongsToMany(Alerte::class, 'alerte_reservations');
+        return $this->belongsToMany(Alerte::class, 'alerte_reservations')->withPivot('id');
     }
 
     public function alerteReservations()

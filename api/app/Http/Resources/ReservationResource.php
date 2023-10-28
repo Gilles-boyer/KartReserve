@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\FormuleReservationResource;
 
 class ReservationResource extends JsonResource
 {
@@ -16,10 +17,14 @@ class ReservationResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'client_id' => $this->client_id,
+            'client' => new ClientResource($this->client),
             'Date' => $this->Date,
             'Statut' => $this->Statut,
             'Commentaire' => $this->Commentaire,
+            'formules' => FormuleReservationResource::collection($this->formules),
+            'sessions' => SessionReservationResource::collection($this->sessions),
+            'paiements' => PaiementResource::collection($this->paiements),
+            'alertes' => AlerteReservationResource::collection($this->alertes)
         ];
     }
 }

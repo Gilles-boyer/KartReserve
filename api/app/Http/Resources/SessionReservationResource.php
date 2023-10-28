@@ -16,9 +16,9 @@ class SessionReservationResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "reservation_id" => $this->reservation_id,
-            "session_id" => $this->session_id,
-            "Statut" => $this->Statut,
+            "session_reservation_id" => $this->pivot->id,
+            "heure_debut" => $this->heure_debut,
+            "statut" => $this->pivot->Statut,
         ];
     }
 }

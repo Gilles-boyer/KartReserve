@@ -16,8 +16,10 @@ class AlerteReservationResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'reservation_id' => $this->reservation_id,
-            'alerte_id' => $this->alerte_id,
+            'icon' => $this->icon,
+            'color' => $this->color,
+            'Message' => $this->Message,
+            'alerte_reservation_id' => $this->pivot->id,
         ];
     }
 }

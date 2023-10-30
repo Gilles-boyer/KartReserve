@@ -22,7 +22,7 @@ class SessionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "heure_debut" => "required|date_format:H:i",
+            "heure_debut" => "required|date_format:H:i|unique:sessions,heure_debut," . $this->id,
         ];
     }
 }

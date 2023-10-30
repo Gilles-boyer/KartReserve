@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SessionRequest;
 use App\Http\Resources\SessionResource;
 use App\Models\Session;
-use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
@@ -19,25 +19,21 @@ class SessionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SessionRequest $request)
     {
-        //
-    }
+        $session = Session::create($request->validated());
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Session $session)
-    {
-        //
+        return response()->json(new SessionResource($session), 201);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Session $session)
+    public function update(SessionRequest $request, Session $session)
     {
-        //
+        $session->update($request->validated());
+
+        return response()->json(new SessionResource($session), 200);
     }
 
     /**
@@ -45,6 +41,8 @@ class SessionController extends Controller
      */
     public function destroy(Session $session)
     {
-        //
+        $session->delete();
+
+        return response()->json(null, 204);
     }
 }

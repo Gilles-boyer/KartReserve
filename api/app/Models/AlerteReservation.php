@@ -5,11 +5,13 @@ namespace App\Models;
 use App\Models\Alerte;
 use App\Models\Reservation;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AlerteReservation extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = ["reservation_id", "alerte_id"];
 

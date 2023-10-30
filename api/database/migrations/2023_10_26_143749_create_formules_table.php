@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('Prix', 8, 2);
             $table->integer('nombre_de_session');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

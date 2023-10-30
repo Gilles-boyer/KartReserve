@@ -22,9 +22,8 @@ class AlerteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "reservation_id" => "required|exists:reservations,id",
-            "icon" => "required|string|max:255",
-            "color" => "required|string|max:255",
+            "icon" => "required|string|max:255|starts_with:mdi-",
+            "color" => "required|string|regex:/^#[a-zA-Z0-9]{6}/i",
             "Message" => "required|string|max:255",
         ];
     }

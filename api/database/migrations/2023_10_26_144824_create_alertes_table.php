@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("color");
             $table->string("Message");
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

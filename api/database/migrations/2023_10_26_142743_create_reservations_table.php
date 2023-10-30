@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('Statut', ['Option', 'Réservé', 'En cours', 'Terminé']);
             $table->text('Commentaire')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

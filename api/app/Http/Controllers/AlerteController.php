@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\AlerteResource;
 use App\Models\Alerte;
 use Illuminate\Http\Request;
+use App\Http\Requests\AlerteRequest;
+use App\Http\Resources\AlerteResource;
 
 class AlerteController extends Controller
 {
@@ -19,25 +20,22 @@ class AlerteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AlerteRequest $request)
     {
-        //
+        $alerte = Alerte::create($request->validated());
+
+        return response()->json(new AlerteResource($alerte), 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Alerte $alerte)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Alerte $alerte)
+    public function update(AlerteRequest $request, Alerte $alerte)
     {
-        //
+        $alerte->update($request->validated());
+
+        return response()->json(new AlerteResource($alerte), 200);
     }
 
     /**
@@ -45,6 +43,8 @@ class AlerteController extends Controller
      */
     public function destroy(Alerte $alerte)
     {
-        //
+        $alerte->delete();
+
+        return response()->json(null, 204);
     }
 }

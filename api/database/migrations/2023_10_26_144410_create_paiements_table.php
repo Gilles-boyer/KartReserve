@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('mode_paiement_id')->constrained();
             $table->enum("Statut", ["Payé", "En attente"]);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

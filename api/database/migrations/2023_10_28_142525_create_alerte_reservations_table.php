@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId("reservation_id")->constrained();
             $table->foreignId("alerte_id")->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

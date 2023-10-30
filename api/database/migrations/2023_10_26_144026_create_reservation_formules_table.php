@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('Nombre_de_personnes');
             $table->enum('Type_de_session', ['adult', 'enfant', 'biplace']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

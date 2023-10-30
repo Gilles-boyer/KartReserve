@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AlertView from '../views/AlertView.vue'
+import ClientView from '../views/ClientView.vue'
+import SessionView from '../views/SessionView.vue'
+import ModePaiementView from '../views/ModePaiementView.vue'
+import FormuleView from '../views/FormuleView.vue'
+import LoginView from '../views/FormuleView.vue'
 
 Vue.use(VueRouter)
 
@@ -11,13 +17,35 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/alert',
+    name: 'alert',
+    component: AlertView
+  },
+  {
+    path: '/client',
+    name: 'client',
+    component: ClientView
+  },
+  {
+    path: '/formule',
+    name: 'formule',
+    component: FormuleView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/mode-paiement',
+    name: 'modePaiement',
+    component: ModePaiementView
+  },
+  {
+    path: '/session',
+    name: 'session',
+    component: SessionView
+  },
 ]
 
 const router = new VueRouter({

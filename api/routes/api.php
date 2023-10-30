@@ -32,4 +32,9 @@ Route::get('/formules', [FormuleController::class, 'index']);
 Route::get('/mode_paiements', [ModePaiementController::class, 'index']);
 Route::get('/paiements', [PaiementController::class, 'index']);
 Route::get('/sessions', [SessionController::class, 'index']);
+
+//alertes
 Route::get('/alertes', [AlerteController::class, 'index']);
+Route::post('/alert', [AlerteController::class, 'store']);
+Route::put('/alert/{alerte}', [AlerteController::class, 'update']);
+Route::delete('/alert/{alerte}', [AlerteController::class, 'destroy']);

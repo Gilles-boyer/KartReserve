@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId("session_id")->constrained();
             $table->enum("Statut", ["Prévu", "En cours", "Terminé"]);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

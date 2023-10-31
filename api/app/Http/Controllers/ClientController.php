@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientRequest;
+use App\Http\Resources\ClientResource;
 
 class ClientController extends Controller
 {
@@ -19,25 +20,21 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
-        //
-    }
+        $client = Client::create($request->validated());
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Client $client)
-    {
-        //
+        return response()->json(new ClientResource($client), 201);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientRequest $request, Client $client)
     {
-        //
+        $client->update($request->validated());
+
+        return response()->json(new ClientResource($client), 200);
     }
 
     /**
@@ -45,6 +42,8 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+
+        return response()->json(null, 204);
     }
 }

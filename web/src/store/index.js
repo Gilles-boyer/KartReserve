@@ -5,6 +5,7 @@ import SnackBar from './snackbar.js'
 import Overlay from './overlay.js'
 import Alert from './alert.js'
 import Session from './session.js'
+import Client from './client.js'
 
 Vue.use(Vuex)
 
@@ -15,5 +16,6 @@ export default new Vuex.Store({
     overlay: Overlay,
     alert: Alert,
     session: Session,
+    client: Client,
   },
 })

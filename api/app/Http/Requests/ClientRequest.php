@@ -23,8 +23,8 @@ class ClientRequest extends FormRequest
     {
         return [
             'Nom' => 'required|string|max:255',
-            'Tel' => 'required|string|max:255|unique:clients',
-            'Email' => 'nullable|string|email|max:255|unique:clients',
+            'Tel' => 'required|string|max:255|unique:clients,Tel,'.$this->id,
+            'Email' => 'nullable|string|email|max:255|unique:clients,Email,'.$this->id,
             'Commentaire' => 'nullable|string',
         ];
     }

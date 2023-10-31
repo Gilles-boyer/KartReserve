@@ -43,3 +43,10 @@ Route::get('/sessions', [SessionController::class, 'index']);
 Route::post('/session', [SessionController::class, 'store']);
 Route::put('/session/{session}', [SessionController::class, 'update']);
 Route::delete('/session/{session}', [SessionController::class, 'destroy']);
+
+//clients
+Route::get('/clients', [ClientController::class, 'index']);
+Route::post('/client', [ClientController::class, 'store']);
+Route::put('/client/{client}', [ClientController::class, 'update']);
+Route::delete('/client/{client}', [ClientController::class, 'destroy']);
+

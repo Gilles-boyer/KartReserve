@@ -25,11 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::get('/clients', [ClientController::class, 'index']);
 Route::get('/reservations', [ReservationController::class, 'index']);
 Route::get('/formules', [FormuleController::class, 'index']);
-Route::get('/mode_paiements', [ModePaiementController::class, 'index']);
 Route::get('/paiements', [PaiementController::class, 'index']);
 
 //alertes
@@ -49,4 +46,11 @@ Route::get('/clients', [ClientController::class, 'index']);
 Route::post('/client', [ClientController::class, 'store']);
 Route::put('/client/{client}', [ClientController::class, 'update']);
 Route::delete('/client/{client}', [ClientController::class, 'destroy']);
+
+//mode-paiements
+Route::get('/mode-paiements', [ModePaiementController::class, 'index']);
+Route::post('/mode-paiement', [ModePaiementController::class, 'store']);
+Route::put('/mode-paiement/{modePaiement}', [ModePaiementController::class, 'update']);
+Route::delete('/mode-paiement/{modePaiement}', [ModePaiementController::class, 'destroy']);
+
 

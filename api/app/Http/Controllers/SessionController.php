@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Session;
 use App\Http\Requests\SessionRequest;
 use App\Http\Resources\SessionResource;
-use App\Models\Session;
+use App\Http\Resources\ReservationSessionResource;
 
 class SessionController extends Controller
 {
@@ -15,6 +16,20 @@ class SessionController extends Controller
     {
         return SessionResource::collection(Session::all());
     }
+
+    /**
+     * Display a listing of session by date.
+     */
+    public function getReservationBySession($date)
+    {
+        $sessions = Session::all()->map(function ($session) use ($date) {
+            $session['date'] = $date;
+            return $session;
+        });
+
+        return ReservationSessionResource::collection($sessions);
+    }
+
 
     /**
      * Store a newly created resource in storage.

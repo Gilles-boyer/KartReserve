@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\FormuleResource;
 use App\Models\Formule;
 use Illuminate\Http\Request;
+use App\Http\Requests\FormuleRequest;
+use App\Http\Resources\FormuleResource;
 
 class FormuleController extends Controller
 {
@@ -19,25 +20,21 @@ class FormuleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FormuleRequest $request)
     {
-        //
-    }
+        $formule = Formule::create($request->validated());
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Formule $formule)
-    {
-        //
+        return response()->json(new FormuleResource($formule), 201);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Formule $formule)
+    public function update(FormuleRequest $request, Formule $formule)
     {
-        //
+        $formule->update($request->validated());
+
+        return response()->json(new FormuleResource($formule), 200);
     }
 
     /**
@@ -45,6 +42,9 @@ class FormuleController extends Controller
      */
     public function destroy(Formule $formule)
     {
-        //
+        $formule->delete();
+
+        return response()->json(null, 204);
     }
 }
+

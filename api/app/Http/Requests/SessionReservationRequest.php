@@ -22,7 +22,7 @@ class SessionReservationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "reservation_id" => "required|exists:reservations,id",
+            "reservation_formule_id" => "required|exists:reservation_formules,id",
             "session_id" => "required|exists:sessions,id",
             "Statut" => "required|in:Prévu,En cours,Terminé",
         ];

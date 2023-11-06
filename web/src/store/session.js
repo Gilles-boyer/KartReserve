@@ -147,8 +147,29 @@ export default {
         });
     },
 
-    defineSET_ModalAddOrUpdateSession({commit}, data) {
-      commit("SET_ModalAddOrUpdateSession", data)
+    changeStatutSession({ commit }, data) {
+      apiSession
+        .changeSessionStatut(data.sessions_reservation_id, {
+          Statut: data.Statut,
+        })
+        .then((res) => {
+          commit("SET_SNACK", {
+            text: "modifié",
+            color: "success",
+            timeout: 2000,
+          });
+        })
+        .catch((err) => {
+          commit("SET_SNACK", {
+            text: err.message,
+            color: "error",
+            timeout: 2000,
+          });
+        });
+    },
+
+    defineSET_ModalAddOrUpdateSession({ commit }, data) {
+      commit("SET_ModalAddOrUpdateSession", data);
     },
 
     sessionCloseDelete({ commit }) {

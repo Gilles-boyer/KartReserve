@@ -7,6 +7,8 @@ import Alert from './alert.js'
 import Session from './session.js'
 import Client from './client.js'
 import ModePaiement from './modePaiement.js'
+import Formule from './formule.js'
+import Reservation from './reservation.js'
 
 Vue.use(Vuex)
 
@@ -18,6 +20,8 @@ export default new Vuex.Store({
     alert: Alert,
     session: Session,
     client: Client,
-    modePaiement: ModePaiement
+    modePaiement: ModePaiement,
+    formule: Formule,
+    reservation: Reservation
   },
 })

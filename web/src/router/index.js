@@ -7,6 +7,7 @@ import SessionView from '../views/SessionView.vue'
 import ModePaiementView from '../views/ModePaiementView.vue'
 import FormuleView from '../views/FormuleView.vue'
 import LoginView from '../views/FormuleView.vue'
+import ReservationView from '../views/ReservationView.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,11 @@ const routes = [
     path: '/alert',
     name: 'alert',
     component: AlertView
+  },
+  {
+    path: '/reservation',
+    name: 'reservation',
+    component: ReservationView
   },
   {
     path: '/client',

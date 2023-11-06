@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\FormuleReservationResource;
 
-class ReservationResource extends JsonResource
+class SessionFormuleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,10 +19,10 @@ class ReservationResource extends JsonResource
             'id' => $this->id,
             'client' => new ClientResource($this->client),
             'Date' => $this->Date,
-            'nombre_personne' => $this->nombre_personne,
             'Statut' => $this->Statut,
             'Commentaire' => $this->Commentaire,
-            'reservationFormules' => ReservationFormuleResource::collection($this->reservationFormules),
+            'formules' => FormuleReservationResource::collection($this->formules),
+            'sessions' => SessionReservationResource::collection($this->sessions),
             'paiements' => PaiementResource::collection($this->paiements),
             'alertes' => AlerteReservationResource::collection($this->alertes)
         ];

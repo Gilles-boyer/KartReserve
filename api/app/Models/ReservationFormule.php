@@ -11,7 +11,7 @@ class ReservationFormule extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['reservation_id', 'formule_id', 'Nombre_de_personnes', 'Type_de_session'];
+    protected $fillable = ['reservation_id', 'formule_id', 'pilote', 'payed', 'Type_de_session'];
 
     public function reservation()
     {
@@ -21,5 +21,10 @@ class ReservationFormule extends Model
     public function formule()
     {
         return $this->belongsTo(Formule::class);
+    }
+
+    public function sessions()
+    {
+        return $this->belongsToMany(Session::class, 'sessions_reservations')->withPivot('id', 'Statut');
     }
 }

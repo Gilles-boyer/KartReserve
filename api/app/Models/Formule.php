@@ -15,7 +15,7 @@ class Formule extends Model
 
     public function reservations()
     {
-        return $this->belongsToMany(Reservation::class, 'reservation_formules')->withPivot('Nombre_de_personnes', 'Type_de_session');
+        return $this->belongsToMany(Reservation::class, 'reservation_formules')->withPivot('pilote', 'payed', 'Type_de_session');
     }
 
     public function reservationFormules()

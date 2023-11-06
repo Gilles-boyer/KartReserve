@@ -19,7 +19,7 @@ class FormuleFactory extends Factory
             'url_image' => $this->faker->imageUrl(),
             'Description' => $this->faker->sentence,
             'Prix' => $this->faker->randomFloat(2, 0, 100),
-            'nombre_de_session' => $this->faker->numberBetween(1, 10),
+            'nombre_de_session' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

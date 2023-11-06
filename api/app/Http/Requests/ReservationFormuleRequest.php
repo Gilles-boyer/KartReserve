@@ -24,7 +24,8 @@ class ReservationFormuleRequest extends FormRequest
         return [
             'reservation_id' => 'required|exists:reservations,id',
             'formule_id' => 'required|exists:formules,id',
-            'Nombre_de_personnes' => 'required|integer|min:1',
+            'pilote' => 'required|string',
+            'payed' => 'boolean',
             'Type_de_session' => 'required|in:adult,enfant,biplace',
         ];
     }

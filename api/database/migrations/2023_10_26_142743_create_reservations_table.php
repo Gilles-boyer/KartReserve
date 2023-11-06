@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('client_id')->constrained();
             $table->date('Date');
+            $table->integer('nombre_personne');
             $table->enum('Statut', ['Option', 'Réservé', 'En cours', 'Terminé']);
             $table->text('Commentaire')->nullable();
             $table->timestamps();

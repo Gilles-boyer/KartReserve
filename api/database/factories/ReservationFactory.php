@@ -22,6 +22,7 @@ class ReservationFactory extends Factory
         return [
             'client_id' => Client::all()->random()->id,
             'Date' => $this->faker->dateTimeBetween('now', '+2 week'),
+            'nombre_personne' => $this->faker->numberBetween(1, 6),
             'Statut' => $this->faker->randomElement(['Option', 'Réservé', 'En cours', 'Terminé']),
             'Commentaire' => $this->faker->text,
         ];
@@ -30,10 +31,11 @@ class ReservationFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Reservation $reservation) {
-            ReservationFormule::factory()->create([
+            ReservationFormule::factory($reservation->nombre_personne)->create([
                 'reservation_id' => $reservation->id,
                 'formule_id' => Formule::all()->random()->id,
-                'Nombre_de_personnes' => $this->faker->numberBetween(1, 6),
+                'pilote' => $this->faker->name,
+                'payed' => $this->faker->boolean,
                 'Type_de_session' => $this->faker->randomElement(['adult', 'enfant', 'biplace']),
             ]);
         });

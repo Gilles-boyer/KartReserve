@@ -13,13 +13,18 @@ class Session extends Model
 
     protected $fillable = ["heure_debut"];
 
-    public function reservations()
+    public function reservationFormules()
     {
-        return $this->belongsToMany(Reservation::class, 'sessions_reservations')->withPivot('Statut');
+        return $this->belongsToMany(ReservationFormule::class, 'sessions_reservations')->withPivot('id','Statut');
     }
 
     public function sessionsReservations()
     {
         return $this->hasMany(SessionReservation::class);
+    }
+
+    public function reservations()
+    {
+        return $this->belongsToMany(ReservationFormule::class, 'sessions_reservations')->withPivot('id','Statut')->with('reservation');
     }
 }

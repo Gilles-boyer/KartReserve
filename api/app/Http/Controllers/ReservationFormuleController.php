@@ -2,11 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ReservationFormule;
 use Illuminate\Http\Request;
+use App\Models\ReservationFormule;
+use App\Http\Requests\ReservationFormulePayedRequest;
+use App\Http\Requests\ReservationFormuleTypePersonRequest;
 
 class ReservationFormuleController extends Controller
 {
+    public function changePaiementStatut(
+        ReservationFormule $reservationFormule,
+        ReservationFormulePayedRequest $request
+    ) {
+        $reservationFormule->payed = $request->payed;
+        $reservationFormule->save();
+
+        return response()->json("modifié", 200);
+    }
+
+    public function changePersonType(
+        ReservationFormule $reservationFormule,
+        ReservationFormuleTypePersonRequest $request
+    ) {
+        $reservationFormule->Type_de_session = $request->Type_de_session;
+        $reservationFormule->save();
+
+        return response()->json("modifié", 200);
+    }
+
     /**
      * Display a listing of the resource.
      */

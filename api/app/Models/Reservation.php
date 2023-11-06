@@ -13,7 +13,7 @@ class Reservation extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['client_id', 'Date', 'Statut', 'Commentaire'];
+    protected $fillable = ['client_id', 'Date', 'nombre_personne', 'Statut', 'Commentaire'];
 
     public function client()
     {
@@ -32,17 +32,12 @@ class Reservation extends Model
 
     public function formules()
     {
-        return $this->belongsToMany(Formule::class, 'reservation_formules')->withPivot('id', 'Nombre_de_personnes', 'Type_de_session');
+        return $this->belongsToMany(Formule::class, 'reservation_formules')->withPivot('id', 'sessions', 'pilote', 'payed', 'Type_de_session');
     }
 
     public function paiements()
     {
         return $this->hasMany(Paiement::class);
-    }
-
-    public function sessions()
-    {
-        return $this->belongsToMany(Session::class, 'sessions_reservations')->withPivot('id', 'Statut');
     }
 
     public function alertes()

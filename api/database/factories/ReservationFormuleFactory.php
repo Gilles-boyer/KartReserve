@@ -28,7 +28,7 @@ class ReservationFormuleFactory extends Factory
     {
         return $this->afterCreating(function (ReservationFormule $reservation_formule) {
             SessionsReservation::factory($reservation_formule->formule->nombre_de_session)->create([
-                'reservation_id' => $reservation_formule->reservation_id,
+                'reservation_formule_id' => $reservation_formule->id,
             ]);
         });
     }

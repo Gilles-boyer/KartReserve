@@ -21,7 +21,8 @@ class FormuleReservationResource extends JsonResource
             'Description' => $this->Description,
             'Prix' => $this->Prix,
             'nombre_de_session' => $this->nombre_de_session,
-            'nbre_pers' => $this->pivot->Nombre_de_personnes,
+            'pilote' => $this->pivot->pilote,
+            'payed' => $this->pivot->payed,
             'type_session' => $this->pivot->Type_de_session,
             'formule_reservation_id' => $this->pivot->id
         ];

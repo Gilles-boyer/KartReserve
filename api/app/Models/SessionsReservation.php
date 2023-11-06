@@ -13,9 +13,9 @@ class SessionsReservation extends Model
 
     protected $fillable = ["reservation_id", "session_id", "Statut"];
 
-    public function reservation()
+    public function reservationFormule()
     {
-        return $this->belongsTo(Reservation::class);
+        return $this->belongsTo(ReservationFormule::class);
     }
 
     public function session()

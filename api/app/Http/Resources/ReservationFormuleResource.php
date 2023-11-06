@@ -16,9 +16,10 @@ class ReservationFormuleResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'reservation_id' => $this->reservation_id,
-            'formule_id' => $this->formule_id,
-            'Nombre_de_personnes' => $this->Nombre_de_personnes,
+            'formule' => new FormuleResource($this->formule),
+            'sessions' => SessionReservationResource::collection($this->sessions),
+            'pilote' => $this->pilote,
+            'payed' => $this->payed,
             'Type_de_session' => $this->Type_de_session,
         ];
     }

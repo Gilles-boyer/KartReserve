@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('reservation_id')->constrained();
             $table->foreignId('formule_id')->constrained();
-            $table->integer('Nombre_de_personnes');
+            $table->string('pilote');
+            $table->boolean('payed')->default(false);
             $table->enum('Type_de_session', ['adult', 'enfant', 'biplace']);
             $table->timestamps();
             $table->softDeletes();

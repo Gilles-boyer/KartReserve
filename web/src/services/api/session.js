@@ -13,4 +13,7 @@ export default {
   destroy(data) {
     return api.delete(`session/${data.id}`);
   },
+  changeSessionStatut(id, data) {
+    return api.put(`session-reservation-formule/${id}`, data);
+  },
 };

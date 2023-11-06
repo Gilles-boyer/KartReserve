@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sessions_reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("reservation_id")->constrained();
+            $table->foreignId("reservation_formule_id")->constrained();
             $table->foreignId("session_id")->constrained();
             $table->enum("Statut", ["Prévu", "En cours", "Terminé"]);
             $table->timestamps();
